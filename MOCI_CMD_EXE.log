@@ -1,0 +1,22 @@
+test_acknowledge_rx (__main__.TestCommandExecution) ... ok
+test_get_battery_charge (__main__.TestCommandExecution) ... ok
+test_get_current_mode (__main__.TestCommandExecution) ... ok
+test_get_current_submode (__main__.TestCommandExecution) ... ok
+test_get_internal_temp (__main__.TestCommandExecution) ... ok
+test_get_last_mode (__main__.TestCommandExecution) ... ok
+test_get_last_sband_pkt (__main__.TestCommandExecution) ... ok
+test_get_last_submode (__main__.TestCommandExecution) ... ok
+test_get_last_uhf_pkt (__main__.TestCommandExecution) ... ok
+test_get_obc_storage_in_use (__main__.TestCommandExecution) ... ok
+test_get_operations (__main__.TestCommandExecution) ... ok
+test_get_remaining_obc_storage (__main__.TestCommandExecution) ... ok
+test_get_remaining_tx2i_storage (__main__.TestCommandExecution) ... ok
+test_get_tx2i_storage_in_use (__main__.TestCommandExecution) ... ok
+test_reboot_obc (__main__.TestCommandExecution) ... ok
+test_sband_tlm (__main__.TestCommandExecution) ... ok
+test_schedule (__main__.TestCommandExecution) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.001s
+
+OK
