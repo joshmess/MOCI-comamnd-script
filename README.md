@@ -1,5 +1,7 @@
-# moci_scripts
-Scripts related to the development and testing of the Multiview Onboard Computation Imager (MOCI) satellite being integrated by the Small Satellite Research Lab at the University of Georgia.
+# MOCI-command-script
+This repostiroy contains the python script used to execute the Command Execution Test for the MOCI satellite mission. The script interfaces with tmtclab's python API to automate the invoking of actions and getting/setting of subsystem parameters.
+
+See procedural details in pdf documentation.
 
 
 ## Test command execution:
