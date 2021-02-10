@@ -1,103 +1,33 @@
 import unittest
 import time
 import sys
+from tmtc.tmtc_py4j import *
+import contet
+
+# Path to jar file that contains the TMTC Library, use contextlib and getattr??
+classpath = '/create/a/classpath/'
+
+# Path to the spacecraft database, use context lib and getattr?
+scdbpath = '/create/a/scbdpath/'
+
+# Configuration of the connection to the onboard software
+obsw_connection = TCPClient(configuration='AUTH SCID1 CCSDS_TM_DATALINK')
 
 
 class TestCommandExecution(unittest.TestCase):
-
+    
     def setUp(self):
         pass
 
-    # ---------------------------------------------DATA DOWNLINK MODE---------------------------------------------
+    # HK_BEACON Methods
+    def test_beacon_reset(self):
+        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
+            #tmtc.invoke('chd.tmtc.HKBeacon.reset')
+            self.assertEqual('a' * 4, 'aaaa')
 
-    # -------------DATA PREP SUBMODE-------------
-
-    # Parameters: Identifier of rcvd trans., time rcvd, size of trans., whether trans. wholly intact
-    # Outcome: Satellite should rcv ACK specifying what was rcvd by GS, whether content should be resent
-    def test_acknowledge_rx(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # -------------DATA TRANSMISSION SUBMODE-------------
-
-    # Parameters: N/A
-    # Outcome:
-    def test_reboot_obc(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters: Requested file, file size
-    # Outcome: Telemitry list downlinked over s-band as opposed to UHF
-    def test_sband_tlm(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters: Requested file, file size
-    # Outcome: Issuer can schedule a variable number of timed commands
-    def test_schedule(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters: Time frame
-    # Outcome: Return scheduled operations fot a given time frame
-    def test_get_operations(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return MOCI battery charge
-    def test_get_battery_charge(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return internal temperature of the MOCI
-    def test_get_internal_temp(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return last packet received by MOCI over UHF
-    def test_get_last_uhf_pkt(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return last packet received by MOCI over UHF
-    def test_get_last_sband_pkt(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return remaining obc storage
-    def test_get_remaining_obc_storage(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return remaining obc storage
-    def test_get_obc_storage_in_use(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return remaining tx2i storage
-    def test_get_remaining_tx2i_storage(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return remaining tx2i storage
-    def test_get_tx2i_storage_in_use(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return last mode occupied by MOCI
-    def test_get_last_mode(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return last submode occupied by MOCI
-    def test_get_last_submode(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return current mode occupied by MOCI
-    def test_get_current_mode(self):
-        self.assertEqual('a' * 4, 'aaaa')
-
-    # Parameters:
-    # Outcome: Return current submode occupied by MOCI
-    def test_get_current_submode(self):
-        self.assertEqual('a' * 4, 'aaaa')
+    def test_beacon_send(self):
+        frame = 5
+        #tmtc.invoke('chd.tmtc.HKBeacon.send', frame)
 
 
 def main(out=sys.stderr, verbosity=2):
