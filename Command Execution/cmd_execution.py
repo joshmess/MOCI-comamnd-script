@@ -19,7 +19,7 @@ class TestCommandExecution(unittest.TestCase):
     def setUp(self):
         pass
 
-    # HK_BEACON Methods
+    # HK_BEACON Actions
     def test_hkbeacon_reset(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('chd.tmtc.HKBeacon.reset')
@@ -30,13 +30,13 @@ class TestCommandExecution(unittest.TestCase):
             result = tmtc.invoke('chd.tmtc.HKBeacon.send')
             self.assertEqual(result, 'pass')
 
-    # TMDebug Methods
+    # TMDebug Actions
     def test_tmdebug_reset(self):
         with TMTCPy4j(classpath,obsw_connection,scdbpath) as tmtc:
             result = tmtc.invoke('chd.tmtc.TMDebug.reset')
             self.assertEqual(result, 'pass')
 
-    # TMTCEvent Methods
+    # TMTCEvent Actions
     def test_tmtcevent_reset(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('chd.tmtc.TMTCEvent.reset')
@@ -47,7 +47,7 @@ class TestCommandExecution(unittest.TestCase):
             result = tmtc.invoke('chd.tmtc.TMTCEvent.forwardEvent')
             self.assertEqual(result, 'pass')
 
-    # TMTCTransfer Methods
+    # TMTCTransfer Actions
     def test_tmtctransfer_clearGetTransfer(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('chd.tmtc.TMTCTransfer.clearGetTransfer')
@@ -58,7 +58,7 @@ class TestCommandExecution(unittest.TestCase):
             result = tmtc.invoke('chd.tmtc.TMTCTransfer.clearSetTransfer')
             self.assertEqual(result, 'pass')
 
-    # WatchdogPeriodicAction Methods
+    # WatchdogPeriodicAction Actions
     def test_watchdogperiodicaction_clear(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('chd.WatchdogPeriodicAction.clear')
@@ -69,7 +69,7 @@ class TestCommandExecution(unittest.TestCase):
             result = tmtc.invoke('chd.WatchdogPeriodicAction.reset')
             self.assertEqual(result, 'pass')
 
-    # Storage Methods
+    # Storage Actions
     def test_storage_wipe(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('core.Storage.wipe')
@@ -85,7 +85,7 @@ class TestCommandExecution(unittest.TestCase):
             result = tmtc.invoke('core.Storage.getParamFromChannel')
             self.assertEqual(result, 'pass')
 
-    # ConfigurationManager Methods
+    # ConfigurationManager Actions
     def test_configurationmanager_resetAll(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('core.ConfigurationManager.resetAll')
@@ -131,7 +131,7 @@ class TestCommandExecution(unittest.TestCase):
             result = tmtc.invoke('core.ConfigurationManager.eraseAll')
             self.assertEqual(result, 'pass')
 
-    # OBT Methods
+    # OBT Actions
     def test_obt_reset(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('core.OBT.reset')
@@ -142,13 +142,13 @@ class TestCommandExecution(unittest.TestCase):
             result = tmtc.invoke('core.OBT.update')
             self.assertEqual(result, 'pass')
 
-    # EventDispatcher Methods
+    # EventDispatcher Actions
     def test_eventdispatcher_reset(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('core.EventDispatcher.reset')
             self.assertEqual(result, 'pass')
 
-    # OBC Methods
+    # OBC Actions
     def test_obc_reset(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('platform.obc.OBC.reset')
@@ -184,7 +184,7 @@ class TestCommandExecution(unittest.TestCase):
             result = tmtc.invoke('platform.obc.OBC.resetGyros')
             self.assertEqual(result, 'pass')
 
-    # Time Methods
+    # Time Actions
     def test_time_reset(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('platform.obc.Time.reset')
@@ -195,10 +195,28 @@ class TestCommandExecution(unittest.TestCase):
             result = tmtc.invoke('platform.obc.Time.refresh')
             self.assertEqual(result, 'pass')
 
-    # GPIO Methods
+    # GPIO Actions
     def test_gpio_reset(self):
         with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
             result = tmtc.invoke('platform.obc.GPIO.reset')
+            self.assertEqual(result, 'pass')
+
+    # PlatformI2C Actions
+    def test_platformi2c_resetStatistics(self):
+        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
+            result = tmtc.invoke('platform.obc.PlatformI2c.resetStatistics')
+            self.assertEqual(result, 'pass')
+
+    # PlatformSPI Actions
+    def test_platformspi_resetErrors(self):
+        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
+            result = tmtc.invoke('platform.obc.PlatformSPI.resetErrors')
+            self.assertEqual(result, 'pass')
+
+    # STX Actions
+    def test_stx_reset(self):
+        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
+            result = tmtc.invoke('platform.STX.reset')
             self.assertEqual(result, 'pass')
 
 
