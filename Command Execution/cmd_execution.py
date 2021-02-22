@@ -1,17 +1,19 @@
 import unittest
-import time
 import sys
 from tmtc.tmtc_py4j import *
 import context
 
-# Path to jar file that contains the TMTC Library, use contextlib and getattr??
+# FIND IN GITLAB or on BA_BOI
 classpath = '/create/a/classpath/'
 
-# Path to the spacecraft database, use context lib and getattr?
+# FIND IN GITLAB or on BA_BOI
 scdbpath = '/create/a/scbdpath/'
 
 # Configuration of the connection to the onboard software
 obsw_connection = TCPClient(configuration='AUTH SCID1 CCSDS_TM_DATALINK')
+
+# Global connection
+tmtc = TMTCPy4j(classpath, obsw_connection, scdbpath)
 
 
 class TestCommandExecution(unittest.TestCase):
@@ -21,203 +23,166 @@ class TestCommandExecution(unittest.TestCase):
 
     # HK_BEACON Actions
     def test_hkbeacon_reset(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('chd.tmtc.HKBeacon.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('chd.tmtc.HKBeacon.reset')
+        print(type(result))
 
     def test_hkbeacon_send(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('chd.tmtc.HKBeacon.send')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('chd.tmtc.HKBeacon.send')
+        print(type(result))
 
     # TMDebug Actions
     def test_tmdebug_reset(self):
-        with TMTCPy4j(classpath,obsw_connection,scdbpath) as tmtc:
-            result = tmtc.invoke('chd.tmtc.TMDebug.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('chd.tmtc.TMDebug.reset')
+        print(type(result))
 
     # TMTCEvent Actions
     def test_tmtcevent_reset(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('chd.tmtc.TMTCEvent.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('chd.tmtc.TMTCEvent.reset')
+        print(type(result))
 
     def test_tmtcevent_forwardEvent(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('chd.tmtc.TMTCEvent.forwardEvent')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('chd.tmtc.TMTCEvent.forwardEvent')
+        print(type(result))
 
     # TMTCTransfer Actions
     def test_tmtctransfer_clearGetTransfer(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('chd.tmtc.TMTCTransfer.clearGetTransfer')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('chd.tmtc.TMTCTransfer.clearGetTransfer')
+        print(type(result))
 
     def test_tmtctransfer_clearSetTransfer(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('chd.tmtc.TMTCTransfer.clearSetTransfer')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('chd.tmtc.TMTCTransfer.clearSetTransfer')
+        print(type(result))
 
     # WatchdogPeriodicAction Actions
     def test_watchdogperiodicaction_clear(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('chd.WatchdogPeriodicAction.clear')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('chd.WatchdogPeriodicAction.clear')
+        print(type(result))
 
     def test_watchdogperiodicaction_reset(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('chd.WatchdogPeriodicAction.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('chd.WatchdogPeriodicAction.reset')
+        print(type(result))
 
     # Storage Actions
     def test_storage_wipe(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.Storage.wipe')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.Storage.wipe')
+        print(type(result))
 
     def test_storage_getParamToChannel(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.Storage.getParamToChannel')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.Storage.getParamToChannel')
+        print(type(result))
 
     def test_storage_getParamFromChannel(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.Storage.getParamFromChannel')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.Storage.getParamFromChannel')
+        print(type(result))
 
     # ConfigurationManager Actions
     def test_configurationmanager_resetAll(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.ConfigurationManager.resetAll')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.ConfigurationManager.resetAll')
+        print(type(result))
 
     def test_configurationmanager_loadAll(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.ConfigurationManager.loadAll')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.ConfigurationManager.loadAll')
+        print(type(result))
 
     def test_configurationmanager_storeAll(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.ConfigurationManager.storeAll')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.ConfigurationManager.storeAll')
+        print(type(result))
 
     def test_configurationmanager_loadProfile(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.ConfigurationManager.loadProfile')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.ConfigurationManager.loadProfile')
+        print(type(result))
 
     def test_configurationmanager_load(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.ConfigurationManager.load')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.ConfigurationManager.load')
+        print(type(result))
 
     def test_configurationmanager_store(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.ConfigurationManager.store')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.ConfigurationManager.store')
+        print(type(result))
 
     def test_configurationmanager_erase(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.ConfigurationManager.erase')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.ConfigurationManager.erase')
+        print(type(result))
 
     def test_configurationmanager_eraseConfig(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.ConfigurationManager.eraseConfig')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.ConfigurationManager.eraseConfig')
+        print(type(result))
 
     def test_configurationmanager_eraseAll(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.ConfigurationManager.eraseAll')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.ConfigurationManager.eraseAll')
+        print(type(result))
 
     # OBT Actions
     def test_obt_reset(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.OBT.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.OBT.reset')
+        print(type(result))
 
     def test_obt_update(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.OBT.update')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.OBT.update')
+        print(type(result))
 
     # EventDispatcher Actions
     def test_eventdispatcher_reset(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('core.EventDispatcher.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('core.EventDispatcher.reset')
+        print(type(result))
 
     # OBC Actions
     def test_obc_reset(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.OBC.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.OBC.reset')
+        print(type(result))
 
     def test_obc_kickWatchdog(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.OBC.kickWatchdog')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.OBC.kickWatchdog')
+        print(type(result))
 
     def test_obc_markCurrentImageStable(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.OBC.markCurrentImageStable')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.OBC.markCurrentImageStable')
+        print(type(result))
 
     def test_obc_clearImage(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.OBC.clearImage')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.OBC.clearImage')
+        print(type(result))
 
     def test_obc_updateImageCrc(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.OBC.updateImageCrc')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.OBC.updateImageCrc')
+        print(type(result))
 
     def test_obc_resetGPS(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.OBC.resetGPS')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.OBC.resetGPS')
+        print(type(result))
 
     def test_obc_resetGyros(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.OBC.resetGyros')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.OBC.resetGyros')
+        print(type(result))
 
     # Time Actions
     def test_time_reset(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.Time.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.Time.reset')
+        print(type(result))
 
     def test_time_refresh(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.Time.refresh')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.Time.refresh')
+        print(type(result))
 
     # GPIO Actions
     def test_gpio_reset(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.GPIO.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.GPIO.reset')
+        print(type(result))
 
     # PlatformI2C Actions
     def test_platformi2c_resetStatistics(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.PlatformI2c.resetStatistics')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.PlatformI2c.resetStatistics')
+        print(type(result))
 
     # PlatformSPI Actions
     def test_platformspi_resetErrors(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.obc.PlatformSPI.resetErrors')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.obc.PlatformSPI.resetErrors')
+        print(type(result))
 
     # STX Actions
     def test_stx_reset(self):
-        with TMTCPy4j(classpath, obsw_connection, scdbpath) as tmtc:
-            result = tmtc.invoke('platform.STX.reset')
-            self.assertEqual(result, 'pass')
+        result = tmtc.invoke('platform.STX.reset')
+        print(type(result))
 
 
 def main(out=sys.stderr, verbosity=2):
